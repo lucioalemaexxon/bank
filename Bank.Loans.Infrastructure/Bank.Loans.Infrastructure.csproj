@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.14" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataAccess\EF\Init\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bank.Loans.Domain\Bank.Loans.Domain.csproj" />
+  </ItemGroup>
+</Project>

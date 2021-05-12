@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.0.4" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Loans\Commands\" />
+    <Folder Include="Features\Rates\" />
+    <Folder Include="Features\Rates\Dtos\" />
+    <Folder Include="Features\Rates\Queries\" />
+    <Folder Include="Features\Fees\" />
+    <Folder Include="Features\Fees\Dtos\" />
+    <Folder Include="Features\Fees\Queries\" />
+    <Folder Include="Features\Rates\Commands\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Features\Rates\Validations\" />
+    <Folder Include="Features\Fees\Commands\" />
+    <Folder Include="Features\Fees\Validations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bank.Loans.Domain\Bank.Loans.Domain.csproj" />
+  </ItemGroup>
+</Project>

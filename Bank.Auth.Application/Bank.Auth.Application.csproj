@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bank.Auth.Domain\Bank.Auth.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.0.4" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.14" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Features\Users\" />
+    <Folder Include="Features\Users\Queries\" />
+    <Folder Include="Features\Users\Dtos\" />
+    <Folder Include="Features\Users\Validations\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Features\Users\Commands\" />
+  </ItemGroup>
+</Project>
