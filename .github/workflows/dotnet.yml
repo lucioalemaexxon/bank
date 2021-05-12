@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Restore dependencies
-      run: dotnet restore .\Bank.sln
+      run: dotnet restore Bank.sln
     - name: Build
-      run: dotnet build .\Bank.sln --no-restore
+      run: dotnet build Bank.sln --no-restore
     - name: Test
-      run: dotnet test .\Bank.sln --no-build --verbosity normal
+      run: dotnet test Bank.sln --no-build --verbosity normal
