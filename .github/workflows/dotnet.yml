@@ -19,7 +19,18 @@ jobs:
         dotnet-version: 3.1.100
     - name: Restore dependencies
       run: dotnet restore Bank.Loans.Api/Bank.Loans.Api.csproj
+
     - name: Build
       run: dotnet build Bank.Loans.Api/Bank.Loans.Api.csproj --no-restore
+
     - name: Test
       run: dotnet test Bank.Loans.Api/Bank.Loans.Api.csproj --no-build --verbosity normal
+
+    - name: Publish
+      run: dotnet publish -c Release -o Bank.Loans.Api/Bank.Loans.Api.csproj
+
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: .net-app
+        path: Bank.Loans.Api
