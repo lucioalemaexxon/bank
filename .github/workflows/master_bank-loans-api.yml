@@ -1,32 +1,34 @@
-name: .NET
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - bank-loans-api
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
+
+    - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.100
-    - name: Restore dependencies
-      run: dotnet restore Bank.Loans.Api/Bank.Loans.Api.csproj
+        dotnet-version: '3.1.301'
 
-    - name: Build
-      run: dotnet build Bank.Loans.Api/Bank.Loans.Api.csproj --no-restore
-
+    - name: Build with dotnet
+      run: dotnet build Bank.Loans.Api/Bank.Loans.Api.csproj --configuration Release
+      
     - name: Test
       run: dotnet test Bank.Loans.Api/Bank.Loans.Api.csproj --no-build --verbosity normal
 
-    - name: Publish
+    - name: dotnet publish
       run: dotnet publish Bank.Loans.Api/Bank.Loans.Api.csproj -c Release -o Bank.Loans.Api/publish
 
     - name: Upload artifact for deployment job
@@ -54,5 +56,5 @@ jobs:
       with:
         app-name: 'bank-loans-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d56e05157a294288bdda0ea2e370729d }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fc7c3cc22f814a1a8bb9c7c0fa5e02eb }}
         package: .
