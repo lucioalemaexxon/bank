@@ -34,3 +34,25 @@ jobs:
       with:
         name: .net-app
         path: Bank.Loans.Api
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v2
+      with:
+        name: .net-app
+
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'BankLoansApi20210519225334'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_db41de366b0049de88149d8533c9a2b4 }}
+        package: .
