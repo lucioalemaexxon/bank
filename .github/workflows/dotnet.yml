@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Restore dependencies
-      run: dotnet restore .\Bank.Loans.Api\Bank.Loans.Api.csproj
+      run: dotnet restore Bank.Loans.Api/Bank.Loans.Api.csproj
     - name: Build
-      run: dotnet build .\Bank.Loans.Api\Bank.Loans.Api.csproj --no-restore
+      run: dotnet build Bank.Loans.Api/Bank.Loans.Api.csproj --no-restore
     - name: Test
-      run: dotnet test .\Bank.Loans.Api\Bank.Loans.Api.csproj --no-build --verbosity normal
+      run: dotnet test Bank.Loans.Api/Bank.Loans.Api.csproj --no-build --verbosity normal
