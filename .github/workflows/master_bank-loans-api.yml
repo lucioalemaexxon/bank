@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'bank-loans-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_eedc594db0554b85bd90103743dc3e04 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6b19503f51ad4884a64728b40b1e9d61 }}
         package: .
