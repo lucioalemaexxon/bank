@@ -56,5 +56,5 @@ jobs:
       with:
         app-name: 'bank-auth-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1193cc69e2a74a9f8e2a94e71cc79133 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6392f2e7b1124dc2bfa233975474be04 }}
         package: .
