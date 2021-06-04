@@ -5,9 +5,8 @@ name: Build and deploy ASP.Net Core app to Azure Web App - bank-auth-api
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -23,19 +22,16 @@ jobs:
         dotnet-version: '3.1.301'
 
     - name: Build with dotnet
-      run: dotnet build Bank.Auth.Api/Bank.Auth.Api.csproj --configuration Release
-      
-    - name: Test
-      run: dotnet test Bank.Auth.Api/Bank.Auth.Api.csproj --no-build --verbosity normal
+      run: dotnet build --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish Bank.Auth.Api/Bank.Auth.Api.csproj -c Release -o Bank.Auth.Api/publish
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
-        name: bank-auth-api
-        path: Bank.Auth.Api/publish
+        name: .net-app
+        path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,7 +44,7 @@ jobs:
     - name: Download artifact from build job
       uses: actions/download-artifact@v2
       with:
-        name: bank-auth-api
+        name: .net-app
 
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
@@ -56,5 +52,5 @@ jobs:
       with:
         app-name: 'bank-auth-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6392f2e7b1124dc2bfa233975474be04 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_46fdaeead401412e86e16769c1a5831e }}
         package: .
